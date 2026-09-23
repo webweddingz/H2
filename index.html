@@ -1,0 +1,1195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#1b1a18">
+  <meta name="description" content="WEDDINGS creates beautiful, personalized digital wedding invitations and wedding experiences.">
+  <title>WEDDINGS — Your love story. Your invitation. Your way.</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+    :root {
+      --black: #1b1a18;
+      --black-soft: #292722;
+      --ivory: #faf7f0;
+      --cream: #f0e9dd;
+      --white: #fffdfa;
+      --gold: #b99458;
+      --gold-light: #e1c58f;
+      --border: #ded5c7;
+      --muted: #716c63;
+      --serif: "Playfair Display", Georgia, serif;
+      --sans: "DM Sans", Arial, sans-serif;
+    }
+
+*, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 90px; }
+    body {
+      margin: 0;
+      background: var(--ivory);
+      color: var(--black);
+      font-family: var(--sans);
+      line-height: 1.65;
+    }
+    body:has(dialog[open]) { overflow: hidden; }
+    img { display: block; max-width: 100%; }
+    a { color: inherit; text-decoration: none; }
+    button, input, select { font: inherit; }
+    button { cursor: pointer; }
+    :focus-visible { outline: 2px solid var(--gold); outline-offset: 4px; }
+    ::selection { background: var(--gold-light); color: var(--black); }
+
+.container { width: min(1220px, calc(100% - 44px)); margin: auto; }
+    .section { padding: clamp(80px, 10vw, 140px) 0; }
+    .dark { background: var(--black); color: var(--ivory); }
+    h1, h2, h3, p { margin-top: 0; }
+    h1, h2, h3 { font-weight: 400; }
+    h1, h2 { font-family: var(--serif); letter-spacing: -.045em; line-height: 1.15; }
+    h1 { font-size: clamp(3.4rem, 6.3vw, 7rem); }
+    h2 { font-size: clamp(2.6rem, 4.5vw, 5rem); }
+    h1 em, h2 em { color: var(--gold); font-weight: 400; }
+    p { color: var(--muted); }
+    .dark p { color: #cac3b7; }
+    .eyebrow {
+      margin-bottom: 20px;
+      color: #95703d;
+      font-size: .68rem;
+      font-weight: 700;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+    }
+    .dark .eyebrow { color: var(--gold-light); }
+    .section-heading { max-width: 800px; margin-bottom: 55px; }
+    .section-heading h2 { margin-bottom: 18px; }
+    .section-heading > p:last-child { max-width: 580px; }
+    .skip-link {
+      position: absolute; left: 12px; top: -80px; z-index: 100;
+      padding: 12px 18px; background: white;
+    }
+    .skip-link:focus { top: 12px; }
+
+.button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 25px;
+      min-height: 53px;
+      padding: 12px 22px;
+      border: 1px solid transparent;
+      border-radius: 0;
+      font-size: .78rem;
+      font-weight: 700;
+      text-align: center;
+      letter-spacing: .045em;
+      transition: transform .25s, background .25s, border-color .25s;
+    }
+    .button:hover { transform: translateY(-3px); }
+    .button-gold { background: var(--gold-light); color: var(--black); }
+    .button-gold:hover { background: #efd39e; }
+    .button-black { background: var(--black); color: var(--white); }
+    .button-black:hover { background: #39342c; }
+    .button-outline-light { color: white; border-color: #8d8071; }
+    .button-outline-light:hover { border-color: var(--gold-light); }
+    .button-outline-dark { border-color: var(--black); color: var(--black); }
+
+/* Navigation */
+    .header {
+      position: sticky;
+      top: 0;
+      z-index: 30;
+      background: rgba(250,247,240,.97);
+      border-bottom: 1px solid rgba(60,50,35,.12);
+      backdrop-filter: blur(14px);
+    }
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 28px;
+      min-height: 84px;
+    }
+    .logo { display: inline-flex; align-items: center; flex: none; }
+    .logo img { width: 180px; height: 65px; object-fit: contain; object-position: left center; }
+    .nav-links { display: flex; align-items: center; gap: clamp(12px, 1.8vw, 27px); }
+    .nav-links > a:not(.button) { font-size: .76rem; font-weight: 600; white-space: nowrap; }
+    .nav-links > a:hover { color: var(--gold); }
+    .nav-links .button { min-height: 43px; padding: 9px 15px; }
+    .menu-toggle { display: none; }
+
+/* Hero */
+    .hero { position: relative; overflow: hidden; }
+    .hero::before {
+      content: "";
+      position: absolute;
+      right: -250px;
+      top: -250px;
+      width: 650px;
+      height: 650px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(185,148,88,.16), transparent 65%);
+      pointer-events: none;
+    }
+    .hero-grid {
+      position: relative;
+      display: grid;
+      grid-template-columns: 1.06fr .94fr;
+      align-items: center;
+      gap: 7%;
+      min-height: 690px;
+      padding: 70px 0 60px;
+    }
+    .hero-copy { position: relative; z-index: 2; }
+    .hero-copy h1 { margin-bottom: 30px; }
+    .hero-copy > p:not(.eyebrow):not(.hero-note) { max-width: 530px; }
+    .hero-buttons { display: flex; flex-wrap: wrap; gap: 13px; margin-top: 35px; }
+    .hero-note { margin-top: 56px; font-size: .61rem; letter-spacing: .18em; }
+    .hero-art { position: relative; height: 570px; }
+    .hero-photo {
+      position: absolute;
+      inset: 0 0 0 14%;
+      background:
+        linear-gradient(180deg, transparent 48%, rgba(20,19,16,.26)),
+        url("https://images.unsplash.com/photo-1519741497674-611481863552?w=1200&q=85") center/cover;
+      filter: saturate(.72);
+    }
+    .stationery {
+      position: absolute;
+      left: 0;
+      top: 19%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: min(310px, 72%);
+      min-height: 390px;
+      padding: 30px;
+      background: #f4eee2;
+      border: 10px solid #eae1d0;
+      outline: 1px solid var(--gold);
+      outline-offset: -21px;
+      box-shadow: 20px 25px 60px rgba(0,0,0,.25);
+      color: var(--black);
+      text-align: center;
+      transform: rotate(-5deg);
+    }
+    .stationery small { font-size: .53rem; letter-spacing: .18em; }
+    .stationery strong { margin: 30px 0 18px; font: 400 clamp(1.8rem, 3vw, 2.8rem)/1.25 var(--serif); }
+    .stationery strong i { display: block; color: var(--gold); }
+    .stationery .ornament { margin: 17px; color: var(--gold); }
+    .sparkle {
+      position: absolute;
+      right: 2%;
+      bottom: 15%;
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--gold-light);
+      box-shadow: 0 0 20px 6px rgba(225,197,143,.42);
+      animation: float 6s ease-in-out infinite;
+    }
+    .hero-strip {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 22px 0;
+      border-top: 1px solid #514a40;
+      color: #bdab8e;
+      font-size: .6rem;
+      letter-spacing: .17em;
+    }
+    @keyframes float { 50% { transform: translateY(-14px); opacity: .5; } }
+
+/* Intro */
+    .intro-grid { display: grid; grid-template-columns: 1.1fr .8fr; gap: 12%; align-items: end; }
+    .intro h2 { margin-bottom: 0; }
+    .intro-copy p:first-child { color: var(--black); font-size: 1.13rem; }
+    .text-link {
+      display: inline-block;
+      margin-top: 14px;
+      padding-bottom: 5px;
+      border-bottom: 1px solid var(--gold);
+      font-size: .83rem;
+      font-weight: 700;
+    }
+
+/* Packages */
+    .packages { background: var(--cream); }
+    .package-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    .package {
+      display: flex;
+      flex-direction: column;
+      min-height: 520px;
+      padding: 36px clamp(22px, 3vw, 42px);
+      background: var(--white);
+      border: 1px solid var(--border);
+    }
+    .package.featured {
+      background: var(--black);
+      color: white;
+      border-color: var(--gold);
+      transform: translateY(-12px);
+      box-shadow: 0 25px 48px rgba(27,26,24,.13);
+    }
+    .package-tag { min-height: 22px; color: #987747; font-size: .63rem; font-weight: 700; letter-spacing: .16em; }
+    .package.featured .package-tag { color: var(--gold-light); }
+    .package h3 { margin: 28px 0 12px; font: 400 2rem var(--serif); }
+    .package > p { min-height: 78px; font-size: .84rem; }
+    .package.featured > p, .package.featured li { color: #d0cac0; }
+    .price { padding-bottom: 22px; border-bottom: 1px solid var(--border); font: 1.37rem var(--serif); }
+    .package.featured .price { border-color: #64594b; }
+    .package ul { margin: 25px 0 32px; padding: 0; list-style: none; }
+    .package li { display: flex; gap: 10px; margin-bottom: 11px; color: #5d584e; font-size: .8rem; }
+    .package li::before { content: "✧"; color: var(--gold); }
+    .package .button { width: 100%; margin-top: auto; }
+    .footnote { margin: 24px 0 0; font-size: .72rem; }
+
+/* Templates */
+    .template-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 28px 18px; }
+    .template-art {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      isolation: isolate;
+      overflow: hidden;
+      aspect-ratio: 4/5;
+      background-color: #b7a997;
+      background-position: center;
+      background-size: cover;
+    }
+    .template-art::before, .dialog-art::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      background: rgba(20,18,16,.36);
+    }
+    .template-paper {
+      display: grid;
+      align-content: center;
+      gap: 12px;
+      width: 72%;
+      height: 73%;
+      padding: 12px;
+      background: rgba(250,247,239,.93);
+      border: 1px solid #c7b68d;
+      box-shadow: 0 18px 45px rgba(0,0,0,.2);
+      text-align: center;
+      transition: transform .3s;
+    }
+    .template-art:hover .template-paper { transform: translateY(-5px) rotate(-2deg); }
+    .template-paper small { color: #8c754a; font-size: .48rem; letter-spacing: .16em; }
+    .template-paper strong { color: #28221d; font: 400 clamp(1.15rem, 2vw, 2rem)/1.13 var(--serif); }
+    .template-paper span { color: #6c6051; font-size: .5rem; letter-spacing: .12em; }
+    .template-card h3 { margin: 16px 0 5px; font: 1.25rem var(--serif); }
+    .template-actions { display: flex; flex-wrap: wrap; gap: 10px 14px; }
+    .template-actions button {
+      padding: 0;
+      border: 0;
+      background: none;
+      color: #735936;
+      font-size: .71rem;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+/* Features and journey */
+    .experience-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12%; align-items: center; }
+    .experience-copy { max-width: 530px; }
+    .experience-copy .button { margin-top: 20px; }
+    .feature-list > div { display: flex; gap: 22px; padding: 19px 0; border-bottom: 1px solid #554f45; }
+    .feature-list span { color: var(--gold-light); font-size: .74rem; }
+    .feature-list strong { font: 400 clamp(1.05rem, 1.6vw, 1.4rem) var(--serif); }
+    .dark .feature-note { margin-top: 45px; font-size: .7rem; }
+    .journey-list {
+      display: grid;
+      grid-template-columns: repeat(7, minmax(0, 1fr));
+      gap: 13px;
+      padding: 0;
+      list-style: none;
+    }
+    .journey-list li { position: relative; padding-top: 22px; border-top: 1px solid var(--gold); }
+    .journey-list li::before {
+      content: "";
+      position: absolute;
+      top: -5px;
+      left: 0;
+      width: 9px;
+      height: 9px;
+      border: 1px solid var(--gold);
+      border-radius: 50%;
+      background: var(--ivory);
+    }
+    .journey-number { color: #9d7942; font: 1.35rem var(--serif); }
+    .journey-list h3 { margin: 22px 0 8px; font: 1rem/1.35 var(--serif); }
+    .journey-list p { font-size: .73rem; line-height: 1.55; }
+
+/* Phone preview */
+    .preview { overflow: hidden; background: #e9e1d5; }
+    .preview-grid { display: grid; grid-template-columns: .95fr 1fr; gap: 8%; align-items: center; }
+    .preview-copy { max-width: 490px; }
+    .check-list { margin: 27px 0 35px; padding: 0; list-style: none; }
+    .check-list li { padding: 11px 0; border-bottom: 1px solid #cec2b1; font-size: .87rem; }
+    .check-list li::before { content: "✧"; margin-right: 11px; color: #987542; }
+    .sample-note { margin-top: 15px; font-size: .7rem; }
+    .phone-stage { position: relative; display: flex; justify-content: center; padding: 24px; }
+    .phone-stage::before {
+      content: "";
+      position: absolute;
+      top: 20%;
+      width: min(450px, 100%);
+      aspect-ratio: 1;
+      border: 1px solid #c6af89;
+      border-radius: 50%;
+    }
+    .phone {
+      position: relative;
+      width: min(330px, 100%);
+      height: 640px;
+      padding: 10px;
+      border: 5px solid #292724;
+      border-radius: 40px;
+      background: #24221f;
+      box-shadow: 28px 38px 60px rgba(28,22,14,.24);
+      transform: rotate(4deg);
+    }
+    .phone::before {
+      content: "";
+      position: absolute;
+      z-index: 2;
+      top: 10px;
+      left: 50%;
+      width: 90px;
+      height: 18px;
+      transform: translateX(-50%);
+      border-radius: 0 0 14px 14px;
+      background: #24221f;
+    }
+    .phone-screen {
+      height: 100%;
+      overflow: auto;
+      scrollbar-width: none;
+      border-radius: 27px;
+      background: #f8f4ed;
+      text-align: center;
+    }
+    .phone-screen::-webkit-scrollbar { display: none; }
+    .phone-hero {
+      display: flex;
+      height: 245px;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 26px;
+      color: white;
+      background:
+        linear-gradient(rgba(10,10,10,.26), rgba(10,10,10,.5)),
+        url("https://images.unsplash.com/photo-1537633552985-df8429e8048b?w=700&q=85") center/cover;
+    }
+    .phone-hero span { font-size: .53rem; letter-spacing: .16em; }
+    .phone-hero strong { margin: 20px 0; font: 2rem var(--serif); }
+    .phone-hero i { color: var(--gold-light); }
+    .phone-content { padding: 26px 21px; }
+    .phone-kicker { color: #9b7b47; font-size: .48rem; letter-spacing: .13em; }
+    .phone-intro { margin: 13px 0; font: .96rem var(--serif); }
+    .countdown { display: flex; justify-content: center; gap: 20px; margin: 22px 0; }
+    .countdown div { display: grid; }
+    .countdown strong { font: 1.3rem var(--serif); }
+    .countdown span { font-size: .47rem; letter-spacing: .15em; }
+    .phone-button { display: block; padding: 10px; background: var(--black); color: white; font-size: .54rem; letter-spacing: .1em; }
+    .phone-detail { display: grid; gap: 3px; padding: 19px 0; border-bottom: 1px solid #ded4c4; }
+    .phone-detail small { color: #987747; font-size: .47rem; letter-spacing: .16em; }
+    .phone-detail strong { font: 1.15rem var(--serif); }
+    .phone-detail span { color: #716a60; font-size: .62rem; }
+
+/* Why, FAQ, booking and footer */
+    .why-grid { display: grid; grid-template-columns: repeat(3, 1fr); }
+    .why-grid article { min-height: 200px; padding: 28px 35px; border-top: 1px solid var(--border); }
+    .why-grid article:nth-child(3n + 2),
+    .why-grid article:nth-child(3n + 3) { border-left: 1px solid var(--border); }
+    .why-grid article > span { color: var(--gold); }
+    .why-grid h3 { margin: 17px 0 8px; font: 1.34rem var(--serif); }
+    .why-grid p { margin: 0; font-size: .81rem; }
+    .faq { background: var(--cream); }
+    .faq-grid { display: grid; grid-template-columns: .8fr 1.2fr; gap: 9%; }
+    .faq-list details { border-bottom: 1px solid #d1c7b8; }
+    .faq-list details:first-child { border-top: 1px solid #d1c7b8; }
+    .faq-list summary {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      align-items: center;
+      padding: 19px 0;
+      font-size: .87rem;
+      font-weight: 600;
+      list-style: none;
+      cursor: pointer;
+    }
+    .faq-list summary::-webkit-details-marker { display: none; }
+    .faq-list summary::after { content: "+"; color: #987747; font-size: 1.4rem; font-weight: 400; }
+    .faq-list details[open] summary::after { content: "−"; }
+    .faq-list details p { margin: 0; padding: 0 23px 19px 0; font-size: .82rem; }
+    .booking-grid { display: grid; grid-template-columns: .85fr 1.15fr; gap: 12%; }
+    .booking-grid > div > p:not(.eyebrow) { max-width: 440px; }
+    .booking-form { padding: clamp(24px, 4vw, 44px); border: 1px solid #5b5143; background: #25231f; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .booking-form label { display: block; margin-bottom: 18px; color: #efe9dd; font-size: .75rem; }
+    .booking-form input, .booking-form select {
+      display: block;
+      width: 100%;
+      height: 48px;
+      margin-top: 7px;
+      padding: 10px 12px;
+      border: 1px solid #686053;
+      border-radius: 0;
+      background: #1c1b18;
+      color: #fffaf0;
+      color-scheme: dark;
+    }
+    .booking-form input::placeholder { color: #aaa298; }
+    .booking-form input:focus, .booking-form select:focus { border-color: var(--gold-light); }
+    .booking-form .button { width: 100%; margin-top: 7px; }
+    .form-message { min-height: 1.4em; margin: 12px 0 0; color: var(--gold-light) !important; font-size: .75rem; }
+    .form-note { margin: 12px 0 0; font-size: .68rem; }
+    .footer { padding-top: 60px; background: #e9e2d6; }
+    .footer-grid { display: grid; grid-template-columns: 2fr repeat(3, 1fr); gap: 30px; padding-bottom: 55px; }
+    .footer-brand p { margin-top: 9px; font: 1rem var(--serif); }
+    .footer h3 { margin-bottom: 15px; font-size: .72rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; }
+    .footer-grid div:not(.footer-brand) a, .footer-grid div:not(.footer-brand) span {
+      display: block; margin: 9px 0; color: #625b50; font-size: .8rem;
+    }
+    .footer-grid a:hover { color: #8e6b3c; }
+    .footer-bottom {
+      display: flex; justify-content: space-between; gap: 20px;
+      padding: 20px 0; border-top: 1px solid #cfc4b3;
+      color: #7d7365; font-size: .62rem; letter-spacing: .1em;
+    }
+
+/* Template preview dialog */
+    .template-dialog {
+      width: min(760px, calc(100% - 28px));
+      max-height: 90vh;
+      padding: 0;
+      border: 1px solid var(--gold);
+      background: var(--ivory);
+      color: var(--black);
+      box-shadow: 0 25px 80px rgba(0,0,0,.3);
+    }
+    .template-dialog::backdrop { background: rgba(16,15,14,.8); backdrop-filter: blur(4px); }
+    .dialog-close {
+      position: absolute; z-index: 2; right: 12px; top: 10px;
+      width: 36px; height: 36px; border: 0;
+      background: var(--ivory); font-size: 1.6rem;
+    }
+    .dialog-art {
+      position: relative;
+      isolation: isolate;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 310px;
+      background-position: center;
+      background-size: cover;
+    }
+    .dialog-art .template-paper { width: 220px; height: 250px; }
+    .dialog-body { padding: 30px; }
+    .dialog-body h2 { margin-bottom: 10px; font-size: 2.3rem; }
+    .dialog-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 22px; }
+
+.reveal { opacity: 0; transform: translateY(20px); transition: opacity .7s, transform .7s; }
+    .reveal.visible { opacity: 1; transform: none; }
+
+@media (max-width: 1050px) {
+      .nav-links { gap: 12px; }
+      .nav-links > a:not(.button) { font-size: .69rem; }
+      .logo img { width: 155px; }
+      .hero-art { height: 500px; }
+      .template-grid { grid-template-columns: repeat(2, 1fr); }
+      .journey-list { grid-template-columns: repeat(4, 1fr); gap: 25px 14px; }
+    }
+    @media (max-width: 780px) {
+      html { scroll-padding-top: 76px; }
+      .container { width: min(600px, calc(100% - 36px)); }
+      .section { padding: 78px 0; }
+      .nav { min-height: 72px; }
+      .logo img { width: 150px; height: 60px; }
+      .menu-toggle {
+        display: grid; place-content: center; gap: 5px;
+        width: 44px; height: 44px;
+        border: 1px solid var(--border); background: transparent;
+      }
+      .menu-toggle span { display: block; width: 19px; height: 1px; background: var(--black); }
+      .nav-links {
+        display: none; position: absolute; top: 72px; left: 0; right: 0;
+        padding: 16px 18px; background: var(--ivory);
+        border-bottom: 1px solid var(--border);
+        box-shadow: 0 16px 26px rgba(0,0,0,.08);
+      }
+      .nav-links.open { display: grid; }
+      .nav-links > a:not(.button) { padding: 11px; font-size: .84rem; }
+      .nav-links .button { margin-top: 8px; }
+      .hero-grid, .intro-grid, .experience-grid, .preview-grid, .faq-grid, .booking-grid {
+        grid-template-columns: 1fr; gap: 48px;
+      }
+      .hero-grid { padding-top: 70px; padding-bottom: 65px; }
+      .hero-art { width: min(500px, 100%); height: 460px; margin: auto; }
+      .hero-strip { display: none; }
+      .package-grid { grid-template-columns: 1fr; gap: 15px; }
+      .package { min-height: 0; }
+      .package.featured { transform: none; }
+      .journey-list { grid-template-columns: 1fr; gap: 0; margin-left: 12px; }
+      .journey-list li { padding: 0 0 27px 25px; border-top: 0; border-left: 1px solid var(--gold); }
+      .journey-list li::before { top: 5px; left: -5px; }
+      .journey-list li:last-child { padding-bottom: 0; }
+      .journey-list h3 { margin: 7px 0; }
+      .journey-list p { margin-bottom: 0; }
+      .phone-stage { order: -1; }
+      .why-grid { grid-template-columns: repeat(2, 1fr); }
+      .why-grid article:nth-child(n) { border-left: 0; }
+      .why-grid article:nth-child(even) { border-left: 1px solid var(--border); }
+      .footer-grid { grid-template-columns: repeat(2, 1fr); }
+      .footer-brand { grid-column: 1 / -1; }
+    }
+    @media (max-width: 520px) {
+      h1 { font-size: clamp(3rem, 12vw, 4.5rem); }
+      h2 { font-size: clamp(2.45rem, 10vw, 3.3rem); }
+      .hero-buttons .button { width: 100%; }
+      .hero-note { margin-top: 34px; }
+      .hero-art { height: 390px; }
+      .stationery { min-height: 300px; padding: 20px; }
+      .stationery strong { margin: 20px 0 10px; }
+      .template-grid { gap: 25px 12px; }
+      .template-paper { width: 80%; }
+      .template-paper strong { font-size: 1.15rem; }
+      .template-card h3 { font-size: 1.06rem; }
+      .template-actions { gap: 8px; }
+      .template-actions button { font-size: .68rem; }
+      .form-row { grid-template-columns: 1fr; gap: 0; }
+      .why-grid { grid-template-columns: 1fr; }
+      .why-grid article:nth-child(n) { min-height: 0; padding: 25px 4px; border-left: 0; }
+      .phone { transform: rotate(2deg); }
+      .footer-bottom { flex-direction: column; gap: 5px; }
+      .dialog-art { min-height: 240px; }
+      .dialog-body { padding: 23px; }
+      .dialog-actions .button { width: 100%; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; transition-duration: .01ms !important; }
+      .reveal { opacity: 1; transform: none; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+<header class="header" id="top">
+    <nav class="nav container" aria-label="Main navigation">
+      <a class="logo" href="#top" aria-label="WEDDINGS home">
+        <img src="assets/weddings-logo.png"
+             alt="WEDDINGS — Your love story. Your invitation. Your way."
+             width="220" height="80">
+      </a>
+
+<button class="menu-toggle" type="button" aria-label="Open menu"
+              aria-controls="nav-links" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+<div class="nav-links" id="nav-links">
+        <a href="#packages">Packages</a>
+        <a href="#templates">Templates</a>
+        <a href="#journey">Customer Journey</a>
+        <a href="#faqs">FAQs</a>
+        <a href="#why">Learn More</a>
+        <a class="button button-black" href="#booking">WhatsApp Us ↗</a>
+      </div>
+    </nav>
+  </header>
+
+<main id="main">
+    <section class="hero dark">
+      <div class="container hero-grid">
+        <div class="hero-copy reveal">
+          <p class="eyebrow">The art of celebrating love</p>
+          <h1>Your dream wedding, <em>packaged beautifully.</em></h1>
+          <p>Your love story deserves more than an invitation. Create a beautiful, personalized wedding experience designed around your story, your style and your way.</p>
+          <div class="hero-buttons">
+            <a class="button button-gold" href="#booking">Create Your Wedding ↗</a>
+            <a class="button button-outline-light" href="#packages">Explore Packages</a>
+          </div>
+          <p class="hero-note">✧ &nbsp; MADE FOR YOUR ONCE-IN-A-LIFETIME MOMENT</p>
+        </div>
+        <div class="hero-art reveal" aria-label="Elegant wedding stationery inspiration">
+          <div class="hero-photo"></div>
+          <div class="stationery">
+            <small>A CELEBRATION OF LOVE</small>
+            <strong>Amara <i>&amp;</i> Daniel</strong>
+            <small>22 MAY 2027 · CAPE TOWN</small>
+            <span class="ornament" aria-hidden="true">✧</span>
+            <small>TOGETHER IS A BEAUTIFUL PLACE TO BE</small>
+          </div>
+          <span class="sparkle" aria-hidden="true"></span>
+        </div>
+      </div>
+      <div class="container hero-strip">
+        <span>DESIGN-LED INVITATIONS</span>
+        <span>SEAMLESS GUEST EXPERIENCES</span>
+        <span>UNIQUELY YOURS</span>
+      </div>
+    </section>
+
+<section class="section intro">
+      <div class="container intro-grid">
+        <div class="reveal">
+          <p class="eyebrow">Welcome to WEDDINGS</p>
+          <h2>Not just an invitation.<br><em>An experience.</em></h2>
+        </div>
+        <div class="intro-copy reveal">
+          <p>From the first announcement to the final RSVP, every detail deserves to feel as thoughtful as the day itself.</p>
+          <p>WEDDINGS brings timeless design and modern convenience together in one beautiful destination for your celebration.</p>
+          <a class="text-link" href="#experience">Discover the experience ↗</a>
+        </div>
+      </div>
+    </section>
+
+<section class="section packages" id="packages">
+      <div class="container">
+        <div class="section-heading reveal">
+          <p class="eyebrow">Curated for your celebration</p>
+          <h2>Choose the way <em>you begin.</em></h2>
+          <p>From beautiful essentials to a fully tailored experience, find a package that feels like you.</p>
+        </div>
+        <div class="package-grid" id="package-grid"></div>
+        <p class="footnote">Prices are provided on enquiry until package rates are confirmed.</p>
+      </div>
+    </section>
+
+<section class="section" id="templates">
+      <div class="container">
+        <div class="section-heading reveal">
+          <p class="eyebrow">The design collection</p>
+          <h2>Find a style that <em>feels like yours.</em></h2>
+          <p>Thoughtful design for every kind of love story. Select a design to include it in your enquiry.</p>
+        </div>
+        <div class="template-grid" id="template-grid"></div>
+        <p class="footnote">Designs shown are illustrative concepts. Your final invitation is personalized with your details.</p>
+      </div>
+    </section>
+
+<section class="section dark" id="experience">
+      <div class="container experience-grid">
+        <div class="experience-copy reveal">
+          <p class="eyebrow">Beyond the invitation</p>
+          <h2>One beautiful place for <em>every detail.</em></h2>
+          <p>Your guests need more than a date and an address. Give them an easy, memorable way to experience your wedding from the first invitation to the last dance.</p>
+          <a class="button button-gold" href="#booking">Plan with WEDDINGS ↗</a>
+        </div>
+        <div class="feature-list reveal">
+          <div><span>01</span><strong>Digital invitations &amp; guest information</strong></div>
+          <div><span>02</span><strong>RSVP management &amp; countdown</strong></div>
+          <div><span>03</span><strong>Wedding schedule &amp; venue details</strong></div>
+          <div><span>04</span><strong>Maps &amp; calendar links</strong></div>
+          <div><span>05</span><strong>Photo gallery &amp; WhatsApp sharing</strong></div>
+          <div><span>06</span><strong>Wedding Talk &amp; reception information</strong></div>
+        </div>
+      </div>
+      <div class="container">
+        <p class="feature-note">Feature availability depends on the chosen package and final production setup.</p>
+      </div>
+    </section>
+
+<section class="section" id="journey">
+      <div class="container">
+        <div class="section-heading reveal">
+          <p class="eyebrow">The customer journey</p>
+          <h2>From “yes” to <em>“we do.”</em></h2>
+          <p>A simple, guided process that keeps the focus where it belongs: on your story.</p>
+        </div>
+        <ol class="journey-list">
+          <li><span class="journey-number">01</span><h3>Tell us about your wedding</h3><p>Share your names, date and the details that matter.</p></li>
+          <li><span class="journey-number">02</span><h3>Choose your style</h3><p>Find your favorite look from our collection.</p></li>
+          <li><span class="journey-number">03</span><h3>Customize your invitation</h3><p>Make the experience feel unmistakably yours.</p></li>
+          <li><span class="journey-number">04</span><h3>Review and approve</h3><p>See every detail before your invitation goes live.</p></li>
+          <li><span class="journey-number">05</span><h3>Share with your guests</h3><p>Send one elegant link to everyone you love.</p></li>
+          <li><span class="journey-number">06</span><h3>Track RSVPs</h3><p>Keep your guest responses organized.</p></li>
+          <li><span class="journey-number">07</span><h3>Enjoy your wedding</h3><p>Be present for the moments that matter.</p></li>
+        </ol>
+      </div>
+    </section>
+
+<section class="section preview" id="preview">
+      <div class="container preview-grid">
+        <div class="preview-copy reveal">
+          <p class="eyebrow">A glimpse of the experience</p>
+          <h2>An invitation they’ll <em>remember.</em></h2>
+          <p>An elegant home for your celebration, thoughtfully designed for the little screen your guests use most.</p>
+          <ul class="check-list">
+            <li>Beautiful first impression</li>
+            <li>All your essential details in one place</li>
+            <li>Clear, effortless guest actions</li>
+          </ul>
+          <a class="button button-black" href="#booking">Make it yours ↗</a>
+          <p class="sample-note">The invitation shown is a sample. Its RSVP display does not collect responses.</p>
+        </div>
+
+<div class="phone-stage reveal">
+          <div class="phone" aria-label="Sample digital wedding invitation for Amara and Daniel">
+            <div class="phone-screen">
+              <div class="phone-hero">
+                <span>THE WEDDING OF</span>
+                <strong>Amara <i>&amp;</i> Daniel</strong>
+                <span>22 MAY 2027 · CAPE TOWN</span>
+              </div>
+              <div class="phone-content">
+                <span class="phone-kicker">WE CAN'T WAIT TO CELEBRATE WITH YOU</span>
+                <p class="phone-intro">The next chapter begins with our favorite people by our side.</p>
+                <div class="countdown" aria-label="Countdown to the sample wedding">
+                  <div><strong id="days">—</strong><span>DAYS</span></div>
+                  <div><strong id="hours">—</strong><span>HRS</span></div>
+                  <div><strong id="minutes">—</strong><span>MIN</span></div>
+                </div>
+                <span class="phone-button">RSVP · SAMPLE PREVIEW</span>
+                <div class="phone-detail"><small>THE VENUE</small><strong>The Grand Hall</strong><span>Cape Town · Sample venue</span><span>Map details →</span></div>
+                <div class="phone-detail"><small>THE CELEBRATION</small><strong>Our wedding day</strong><span>15:00 Ceremony · 17:00 Reception</span></div>
+                <div class="phone-detail"><small>GOOD TO KNOW</small><strong>Dress code</strong><span>Black tie optional</span></div>
+                <div class="phone-detail"><small>MORE TO SHARE</small><strong>Wedding Talk</strong><span>Ceremony notes and our story</span></div>
+                <div class="phone-detail"><small>AFTER THE CEREMONY</small><strong>Reception</strong><span>Dinner, dancing and celebration</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+<section class="section" id="why">
+      <div class="container">
+        <div class="section-heading reveal">
+          <p class="eyebrow">Why WEDDINGS</p>
+          <h2>Every detail, <em>beautifully considered.</em></h2>
+        </div>
+        <div class="why-grid">
+          <article><span>✧</span><h3>Beautiful by design</h3><p>Considered typography, composition and details made to feel special.</p></article>
+          <article><span>✧</span><h3>Simple for guests</h3><p>Everything they need, easy to find and easy to use.</p></article>
+          <article><span>✧</span><h3>Personalized for every couple</h3><p>A celebration shaped around your people and your story.</p></article>
+          <article><span>✧</span><h3>Built for modern weddings</h3><p>An invitation that feels at home on every screen.</p></article>
+          <article><span>✧</span><h3>Easy RSVP management</h3><p>A clearer path from invitation to guest response.</p></article>
+          <article><span>✧</span><h3>Everything in one place</h3><p>Keep your most important wedding details together.</p></article>
+        </div>
+      </div>
+    </section>
+
+<section class="section faq" id="faqs">
+      <div class="container faq-grid">
+        <div class="reveal">
+          <p class="eyebrow">Good to know</p>
+          <h2>Frequently asked <em>questions.</em></h2>
+          <p>Still have something on your mind? Tell us what you’re planning.</p>
+          <a class="text-link" href="#booking">Ask us on WhatsApp ↗</a>
+        </div>
+        <div class="faq-list">
+          <details><summary>How does WEDDINGS work?</summary><p>Tell us about your wedding, choose a package and style, then work with us to personalize and approve your invitation before sharing it.</p></details>
+          <details><summary>Can I customize my invitation?</summary><p>Yes. Customization options depend on your selected package. Share the look and details you have in mind when you enquire.</p></details>
+          <details><summary>Can I use my own photos?</summary><p>Yes, your own photos can be considered as part of the design, subject to your package and image quality.</p></details>
+          <details><summary>Can guests RSVP online?</summary><p>RSVP functionality is part of the planned digital experience. We’ll confirm availability and setup for your package before booking.</p></details>
+          <details><summary>Can I add Google Maps?</summary><p>Venue directions or a Google Maps link can be included when you provide the correct venue location.</p></details>
+          <details><summary>Can I include a Wedding Talk?</summary><p>Yes. Tell us what ceremony information you’d like guests to see, and we’ll discuss the best way to present it.</p></details>
+          <details><summary>Can I include a reception?</summary><p>Yes. You can share reception timing, venue details and other helpful information.</p></details>
+          <details><summary>Can I change information after publishing?</summary><p>Ask us about update options for your package before booking. Some changes may require additional work.</p></details>
+          <details><summary>Can I share the invitation through WhatsApp?</summary><p>Yes. Once your invitation is published, you can share its link through WhatsApp.</p></details>
+          <details><summary>How long does it take to create my invitation?</summary><p>Timing depends on the package, your content and the number of revisions. We’ll agree on a timeline when we discuss your wedding.</p></details>
+        </div>
+      </div>
+    </section>
+
+<section class="section dark" id="booking">
+      <div class="container booking-grid">
+        <div class="reveal">
+          <p class="eyebrow">Let's begin</p>
+          <h2>Your story starts <em>here.</em></h2>
+          <p>Share a few details and open a ready-to-send WhatsApp message. Nothing is sent until you choose to send it in WhatsApp.</p>
+        </div>
+
+<form class="booking-form" id="booking-form">
+          <div class="form-row">
+            <label>Your names
+              <input name="names" type="text" maxlength="120" placeholder="e.g. Amara & Daniel">
+            </label>
+            <label>Wedding date
+              <input name="date" type="date">
+            </label>
+          </div>
+          <div class="form-row">
+            <label>Estimated guest count
+              <input name="guests" type="number" min="1" max="100000" inputmode="numeric" placeholder="e.g. 120">
+            </label>
+            <label>Package
+              <select name="package" id="package-select">
+                <option value="">Not sure yet</option>
+              </select>
+            </label>
+          </div>
+          <label>Preferred design
+            <select name="design" id="design-select">
+              <option value="">Help me choose</option>
+            </select>
+          </label>
+          <button class="button button-gold" type="submit">Continue to WhatsApp ↗</button>
+          <p class="form-message" id="form-message" role="status" aria-live="polite"></p>
+          <p class="form-note">Your details are used to compose a message on your device. This page does not store them.</p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+<footer class="footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <a class="logo" href="#top" aria-label="WEDDINGS home">
+          <img src="assets/weddings-logo.png"
+               alt="WEDDINGS — Your love story. Your invitation. Your way."
+               width="220" height="80">
+        </a>
+        <p>Your love story. Your invitation. Your way.</p>
+      </div>
+      <div>
+        <h3>Explore</h3>
+        <a href="#packages">Packages</a>
+        <a href="#templates">Templates</a>
+        <a href="#journey">Customer Journey</a>
+        <a href="#faqs">FAQs</a>
+      </div>
+      <div>
+        <h3>Connect</h3>
+        <a href="#booking">WhatsApp</a>
+        <span id="instagram-link">Instagram · coming soon</span>
+        <span id="email-link">Email · coming soon</span>
+      </div>
+      <div>
+        <h3>Information</h3>
+        <span id="terms-link">Terms · coming soon</span>
+        <span id="privacy-link">Privacy · coming soon</span>
+      </div>
+    </div>
+    <div class="container footer-bottom">
+      <span>© <span id="year"></span> WEDDINGS</span>
+      <span>CRAFTED FOR YOUR LOVE STORY</span>
+    </div>
+  </footer>
+
+<dialog class="template-dialog" id="template-dialog" aria-labelledby="dialog-title">
+    <button class="dialog-close" type="button" aria-label="Close preview">×</button>
+    <div class="dialog-art" id="dialog-art"></div>
+    <div class="dialog-body">
+      <p class="eyebrow">Design preview</p>
+      <h2 id="dialog-title"></h2>
+      <p id="dialog-description"></p>
+      <p class="sample-note">Illustrative style preview; final content and layout may vary.</p>
+      <div class="dialog-actions">
+        <button class="button button-black" type="button" id="dialog-choose">Choose this design</button>
+        <button class="button button-outline-dark" type="button" id="dialog-customize">Customize / enquire</button>
+      </div>
+    </div>
+  </dialog>
+
+<script>
+    "use strict";
+
+/*
+      CHANGE THESE BEFORE LAUNCH:
+      - WhatsApp number: country code + number, digits only.
+      - Package prices: edit the PACKAGES array below.
+      - Add your real links when available.
+    */
+    const CONFIG = {
+      whatsappNumber: "YOUR_WHATSAPP_NUMBER",
+      instagramUrl: "",
+      emailAddress: "",
+      termsUrl: "",
+      privacyUrl: ""
+    };
+
+const PACKAGES = [
+      {
+        name: "STARTER",
+        tag: "THE ESSENTIALS",
+        description: "For couples who need beautiful wedding essentials.",
+        price: "Price on request",
+        features: [
+          "Personalized digital invitation",
+          "Wedding details and schedule",
+          "Venue information",
+          "Mobile-friendly design"
+        ]
+      },
+      {
+        name: "POPULAR",
+        tag: "MOST LOVED",
+        description: "For couples wanting a complete digital wedding experience.",
+        price: "Price on request",
+        featured: true,
+        features: [
+          "Everything in Starter",
+          "Enhanced wedding website",
+          "RSVP setup, subject to availability",
+          "Guest information sections",
+          "Gallery and story options"
+        ]
+      },
+      {
+        name: "SIGNATURE",
+        tag: "BESPOKE EXPERIENCE",
+        description: "For couples wanting a premium, fully customized wedding experience.",
+        price: "Price on request",
+        features: [
+          "Everything in Popular",
+          "Tailored design direction",
+          "Expanded content and sections",
+          "Premium personalization",
+          "Planning support discussion"
+        ]
+      }
+    ];
+
+const TEMPLATES = [
+      { name: "Modern Chic", description: "Contemporary lines and understated elegance.", photo: "photo-1519741497674-611481863552" },
+      { name: "Classic Luxury", description: "Timeless romance with refined gold detailing.", photo: "photo-1511285560929-80b456fea0bc" },
+      { name: "Garden Romance", description: "An airy, floral-inspired celebration.", photo: "photo-1464366400600-7168b8af9bc3" },
+      { name: "Minimalist", description: "Quiet confidence and considered simplicity.", photo: "photo-1515934751635-c81c6bc9a2d8" },
+      { name: "Glamorous", description: "A dramatic setting with an evening glow.", photo: "photo-1532712938310-34cb3982ef74" },
+      { name: "Traditional", description: "A graceful tribute to meaningful traditions.", photo: "photo-1519225421980-715cb0215aed" },
+      { name: "Contemporary African", description: "Modern sophistication with rich cultural expression.", photo: "photo-1508214751196-bcfd4ca60f91" },
+      { name: "Black & Gold", description: "Bold contrast and statement-making elegance.", photo: "photo-1537633552985-df8429e8048b" }
+    ];
+
+const $ = (selector) => document.querySelector(selector);
+
+function escapeHtml(value) {
+      return String(value).replace(/[&<>"']/g, character => ({
+        "&": "&amp;",
+        "<": "&lt;",
+        ">": "&gt;",
+        '"': "&quot;",
+        "'": "&#39;"
+      })[character]);
+    }
+
+function renderPackages() {
+      $("#package-grid").innerHTML = PACKAGES.map(item => `
+        <article class="package ${item.featured ? "featured" : ""}">
+          <span class="package-tag">${escapeHtml(item.tag)}</span>
+          <h3>${escapeHtml(item.name)}</h3>
+          <p>${escapeHtml(item.description)}</p>
+          <div class="price">${escapeHtml(item.price)}</div>
+          <ul>${item.features.map(feature => `<li>${escapeHtml(feature)}</li>`).join("")}</ul>
+          <a class="button ${item.featured ? "button-gold" : "button-black"}"
+             href="#booking" data-package="${escapeHtml(item.name)}">
+            Enquire about ${escapeHtml(item.name)} ↗
+          </a>
+        </article>
+      `).join("");
+
+$("#package-select").insertAdjacentHTML(
+        "beforeend",
+        PACKAGES.map(item => `<option value="${escapeHtml(item.name)}">${escapeHtml(item.name)}</option>`).join("")
+      );
+    }
+
+function paperMarkup(name) {
+      return `
+        <div class="template-paper" aria-hidden="true">
+          <small>TOGETHER WITH THEIR FAMILIES</small>
+          <strong>Amara<br>&amp;<br>Daniel</strong>
+          <span>INVITE YOU TO CELEBRATE</span>
+          <small>${escapeHtml(name.toUpperCase())}</small>
+        </div>
+      `;
+    }
+
+function renderTemplates() {
+      $("#template-grid").innerHTML = TEMPLATES.map((item, index) => `
+        <article class="template-card">
+          <div class="template-art" role="img"
+               aria-label="${escapeHtml(item.name)} invitation design concept"
+               style="background-image:url('https://images.unsplash.com/${item.photo}?w=850&q=80')">
+            ${paperMarkup(item.name)}
+          </div>
+          <h3>${escapeHtml(item.name)}</h3>
+          <div class="template-actions">
+            <button type="button" data-preview="${index}">Preview</button>
+            <button type="button" data-choose="${index}">Choose this design</button>
+            <button type="button" data-customize="${index}">Customize</button>
+          </div>
+        </article>
+      `).join("");
+
+$("#design-select").insertAdjacentHTML(
+        "beforeend",
+        TEMPLATES.map(item => `<option value="${escapeHtml(item.name)}">${escapeHtml(item.name)}</option>`).join("")
+      );
+    }
+
+function chooseDesign(index) {
+      const item = TEMPLATES[index];
+      if (!item) return;
+      $("#design-select").value = item.name;
+      $("#template-dialog").close();
+      $("#booking").scrollIntoView({ behavior: "smooth" });
+    }
+
+function openPreview(index) {
+      const item = TEMPLATES[index];
+      if (!item) return;
+
+$("#dialog-title").textContent = item.name;
+      $("#dialog-description").textContent = item.description;
+      $("#dialog-art").style.backgroundImage =
+        `url("https://images.unsplash.com/${item.photo}?w=1200&q=85")`;
+      $("#dialog-art").innerHTML = paperMarkup(item.name);
+      $("#dialog-choose").onclick = () => chooseDesign(index);
+      $("#dialog-customize").onclick = () => chooseDesign(index);
+      $("#template-dialog").showModal();
+    }
+
+function setupNavigationAndDesigns() {
+      const menuButton = $(".menu-toggle");
+      const menu = $("#nav-links");
+
+menuButton.addEventListener("click", () => {
+        const isOpen = menu.classList.toggle("open");
+        menuButton.setAttribute("aria-expanded", String(isOpen));
+        menuButton.setAttribute("aria-label", isOpen ? "Close menu" : "Open menu");
+      });
+
+menu.addEventListener("click", event => {
+        if (event.target.closest("a")) {
+          menu.classList.remove("open");
+          menuButton.setAttribute("aria-expanded", "false");
+          menuButton.setAttribute("aria-label", "Open menu");
+        }
+      });
+
+document.addEventListener("click", event => {
+        const packageLink = event.target.closest("[data-package]");
+        if (packageLink) $("#package-select").value = packageLink.dataset.package;
+
+const preview = event.target.closest("[data-preview]");
+        if (preview) openPreview(Number(preview.dataset.preview));
+
+const design = event.target.closest("[data-choose], [data-customize]");
+        if (design) chooseDesign(Number(design.dataset.choose ?? design.dataset.customize));
+      });
+
+const dialog = $("#template-dialog");
+      $(".dialog-close").addEventListener("click", () => dialog.close());
+      dialog.addEventListener("click", event => {
+        if (event.target === dialog) dialog.close();
+      });
+    }
+
+function setupBooking() {
+      $("#booking-form").addEventListener("submit", event => {
+        event.preventDefault();
+
+const number = CONFIG.whatsappNumber.trim();
+        if (!/^\d{8,15}$/.test(number)) {
+          $("#form-message").textContent =
+            "Booking is not connected yet. The site owner needs to add a WhatsApp number.";
+          return;
+        }
+
+$("#form-message").textContent = "";
+        const data = new FormData(event.currentTarget);
+        const lines = ["Hi WEDDINGS! I'd like to create my wedding invitation."];
+
+const fields = [
+          ["Names", data.get("names")],
+          ["Wedding date", data.get("date")],
+          ["Guest count", data.get("guests")],
+          ["Package", data.get("package")],
+          ["Preferred design", data.get("design")]
+        ];
+
+for (const [label, value] of fields) {
+          if (String(value || "").trim()) {
+            lines.push(`${label}: ${String(value).trim()}`);
+          }
+        }
+
+window.location.href =
+          `https://wa.me/${number}?text=${encodeURIComponent(lines.join("\n"))}`;
+      });
+    }
+
+function setupFooter() {
+      const links = [
+        ["instagram-link", CONFIG.instagramUrl, "Instagram"],
+        ["email-link", CONFIG.emailAddress ? `mailto:${CONFIG.emailAddress}` : "", "Email"],
+        ["terms-link", CONFIG.termsUrl, "Terms"],
+        ["privacy-link", CONFIG.privacyUrl, "Privacy"]
+      ];
+
+for (const [id, url, label] of links) {
+        if (!url) continue;
+        const anchor = document.createElement("a");
+        anchor.href = url;
+        anchor.textContent = label;
+
+if (url.startsWith("https://")) {
+          anchor.target = "_blank";
+          anchor.rel = "noopener noreferrer";
+        }
+
+$(`#${id}`).replaceWith(anchor);
+      }
+
+$("#year").textContent = new Date().getFullYear();
+    }
+
+function startSampleCountdown() {
+      const target = new Date("2027-05-22T15:00:00+02:00").getTime();
+
+function update() {
+        const remaining = Math.max(0, target - Date.now());
+        $("#days").textContent = String(Math.floor(remaining / 86400000));
+        $("#hours").textContent = String(Math.floor(remaining / 3600000) % 24).padStart(2, "0");
+        $("#minutes").textContent = String(Math.floor(remaining / 60000) % 60).padStart(2, "0");
+      }
+
+update();
+      setInterval(update, 60000);
+    }
+
+function setupReveals() {
+      const elements = document.querySelectorAll(".reveal");
+
+if (!("IntersectionObserver" in window) ||
+          window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        elements.forEach(element => element.classList.add("visible"));
+        return;
+      }
+
+const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add("visible");
+          observer.unobserve(entry.target);
+        });
+      }, { threshold: 0.12 });
+
+elements.forEach(element => observer.observe(element));
+    }
+
+renderPackages();
+    renderTemplates();
+    setupNavigationAndDesigns();
+    setupBooking();
+    setupFooter();
+    startSampleCountdown();
+    setupReveals();
+  </script>
+</body>
+</html>
